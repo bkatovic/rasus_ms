@@ -12,7 +12,7 @@ public class MeasurementController {
 	}
 	
 	@GetMapping("/current-reading")
-	public String searchNeighbour() {
+	public String currentReading() {
 		return service.getMeasurement();
 	}
 
