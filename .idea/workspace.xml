@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="abf05255-c641-4157-81a8-b86d920d73e4" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/humidity-microservice/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/humidity-microservice/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/temperature-microservice/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/temperature-microservice/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/temperature-microservice/src/main/java/temperaturemicroservice/MeasurementController.java" beforeDir="false" afterPath="$PROJECT_DIR$/temperature-microservice/src/main/java/temperaturemicroservice/MeasurementController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/temperature-microservice/src/main/java/temperaturemicroservice/TemperatureMicroserviceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/temperature-microservice/src/main/java/temperaturemicroservice/TemperatureMicroserviceApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/temperature-microservice/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/temperature-microservice/src/main/resources/application.properties" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1mew8S7bSBoET5pEqPFQTFc1lK9" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="abf05255-c641-4157-81a8-b86d920d73e4" name="Default Changelist" comment="" />
+      <created>1609867206871</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1609867206871</updated>
+    </task>
+    <servers />
+  </component>
+</project>

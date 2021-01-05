@@ -8,8 +8,8 @@ import model.Measurement;
 
 public class RestTemplateImplementation implements RestInterface{
 
-	private String humiditymicroserviceURL;
-	private String temperaturemicroserviceURL;
+	private String humiditymicroserviceURI;
+	private String temperaturemicroserviceURI;
 	private String tempFormat;
 	private RestTemplate restTemplate;
 	
@@ -17,12 +17,12 @@ public class RestTemplateImplementation implements RestInterface{
 		
 	}
 
-	public RestTemplateImplementation(String humiditymicroserviceURL,
-									  String temperaturemicroserviceURL,
+	public RestTemplateImplementation(String humiditymicroserviceURI,
+									  String temperaturemicroserviceURI,
 									  String tempFormat)
 	{
-		this.humiditymicroserviceURL = humiditymicroserviceURL;
-		this.temperaturemicroserviceURL = temperaturemicroserviceURL;
+		this.humiditymicroserviceURI = humiditymicroserviceURI;
+		this.temperaturemicroserviceURI = temperaturemicroserviceURI;
 		this.tempFormat = tempFormat;
 
         restTemplate = new RestTemplate();
@@ -32,8 +32,8 @@ public class RestTemplateImplementation implements RestInterface{
 	
 	@Override
 	public String getMeasurement(){
-		String humidity = restTemplate.getForObject(humiditymicroserviceURL + "/current-reading", String.class);
-		String temperature = restTemplate.getForObject(temperaturemicroserviceURL + "/current-reading", String.class);
+		String humidity = restTemplate.getForObject(humiditymicroserviceURI + "/current-reading", String.class);
+		String temperature = restTemplate.getForObject(temperaturemicroserviceURI + "/current-reading", String.class);
 		
 		if (tempFormat.equals("K")) temperature = Double.toString(Double.parseDouble(temperature) + 273.15);
 		

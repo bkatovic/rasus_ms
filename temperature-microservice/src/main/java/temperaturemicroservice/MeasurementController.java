@@ -1,5 +1,6 @@
 package temperaturemicroservice;
 
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -15,5 +16,5 @@ public class MeasurementController {
 	public String currentReading() {
 		return service.getMeasurement();
 	}
-
 }
+
