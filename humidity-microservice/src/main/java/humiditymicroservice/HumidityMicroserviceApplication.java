@@ -1,6 +1,7 @@
 package humiditymicroservice;
 
 import java.io.FileReader;
+import java.io.InputStream;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +32,7 @@ public class HumidityMicroserviceApplication {
 	CommandLineRunner runner() {
 		return args -> {
 		  List<Measurement> measurements = new CsvToBeanBuilder<Measurement>(
-		            new FileReader("mjerenja.csv"))
+		            new FileReader("src/main/resources/mjerenja.csv"))
 		            .withType(Measurement.class).build().parse();
 		  
 		  long id = 0;
@@ -42,6 +43,21 @@ public class HumidityMicroserviceApplication {
 		  repo.saveAll(measurements);
 		};
 	}
+	
+    private InputStream getFileFromResourceAsStream(String fileName) {
+
+        // The class loader that loaded the class
+        ClassLoader classLoader = getClass().getClassLoader();
+        InputStream inputStream = classLoader.getResourceAsStream(fileName);
+
+        // the stream holding the file content
+        if (inputStream == null) {
+            throw new IllegalArgumentException("file not found! " + fileName);
+        } else {
+            return inputStream;
+        }
+
+    }
 	
 
 }

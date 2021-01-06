@@ -29,7 +29,7 @@ public class TemperatureMicroserviceApplication {
 	CommandLineRunner runner() {
 		return args -> {
 		  List<Measurement> measurements = new CsvToBeanBuilder<Measurement>(
-		            new FileReader("mjerenja.csv"))
+		            new FileReader("src/main/resources/mjerenja.csv"))
 		            .withType(Measurement.class).build().parse();
 		  
 		  long id = 0;

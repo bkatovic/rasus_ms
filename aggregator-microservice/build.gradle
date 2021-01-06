@@ -7,7 +7,7 @@ plugins {
 
 group = 'com.example'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '15'
+sourceCompatibility = '11'
 
 repositories {
 	mavenCentral()
@@ -41,7 +41,7 @@ jib {
 	container {
 		appRoot = '/opt'
 		ports = ['8080']
-		jvmFlags = [' -Djava.security.egd=file:/dev/./urandom']
+		//jvmFlags = [' -Djava.security.egd=file:/dev/./urandom']
 	}
 }
 	

@@ -1,5 +1,10 @@
 package aggregatormicroservice;
 
+import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.ProtocolException;
+import java.net.URL;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +28,45 @@ public class AggregatorController {
 	public String readings() {
 		//String humiditymicroserviceURI = "http://127.0.0.1:8081";
 		//String temperaturemicroserviceURI = "http://127.0.0.1:8082";
+		
+		URL url = null;
+		try {
+			url = new URL("http://eureka-server:8761");
+		} catch (MalformedURLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		HttpURLConnection connection = null;
+		try {
+			connection = (HttpURLConnection)url.openConnection();
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		try {
+			connection.setRequestMethod("GET");
+		} catch (ProtocolException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			connection.connect();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		int code = 420;
+		try {
+			code = connection.getResponseCode();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		System.out.println(code);
+		
+		
 		
 		String humidityURI = null, temperatureURI = null;
 		List<ServiceInstance> list;
