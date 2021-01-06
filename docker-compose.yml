@@ -1,0 +1,27 @@
+version: "3.7"
+services:
+  eureka-server:
+    image: 9f255c8be8e8
+    ports:
+      - "3000:8761"
+
+  aggregation-microservice:
+    image: 6bdb0a3456c4
+    ports:
+      - "3001:8080"
+    depends_on:
+      - "eureka-server"
+
+  humidity-microservice:
+    image: dc6842dccba6
+    ports:
+      - "3002:8080"
+    depends_on:
+      - "eureka-server"
+
+  temperature-microservice:
+    image: 434228b3b408
+    ports:
+      - "3003:8080"
+    depends_on:
+      - "eureka-server"

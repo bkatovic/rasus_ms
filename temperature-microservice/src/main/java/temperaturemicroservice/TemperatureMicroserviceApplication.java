@@ -1,6 +1,9 @@
 package temperaturemicroservice;
 
+import java.io.File;
 import java.io.FileReader;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,8 +31,10 @@ public class TemperatureMicroserviceApplication {
 	@Bean
 	CommandLineRunner runner() {
 		return args -> {
+		  File mjerenjaFile = getFileFromResource("mjerenja.csv");
+
 		  List<Measurement> measurements = new CsvToBeanBuilder<Measurement>(
-		            new FileReader("src/main/resources/mjerenja.csv"))
+		            new FileReader(mjerenjaFile))
 		            .withType(Measurement.class).build().parse();
 		  
 		  long id = 0;
@@ -40,5 +45,17 @@ public class TemperatureMicroserviceApplication {
 		  repo.saveAll(measurements);
 		};
 	}
+	
+    private File getFileFromResource(String fileName) throws URISyntaxException{
+
+        ClassLoader classLoader = getClass().getClassLoader();
+        URL resource = classLoader.getResource(fileName);
+        if (resource == null) {
+            throw new IllegalArgumentException("file not found! " + fileName);
+        } else {
+            return new File(resource.toURI());
+        }
+
+    }
 
 }

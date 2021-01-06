@@ -1,7 +1,9 @@
 package humiditymicroservice;
 
+import java.io.File;
 import java.io.FileReader;
-import java.io.InputStream;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,8 +33,10 @@ public class HumidityMicroserviceApplication {
 	@Bean
 	CommandLineRunner runner() {
 		return args -> {
+		  File mjerenjaFile = getFileFromResource("mjerenja.csv");
+
 		  List<Measurement> measurements = new CsvToBeanBuilder<Measurement>(
-		            new FileReader("src/main/resources/mjerenja.csv"))
+		            new FileReader(mjerenjaFile))
 		            .withType(Measurement.class).build().parse();
 		  
 		  long id = 0;
@@ -44,20 +48,16 @@ public class HumidityMicroserviceApplication {
 		};
 	}
 	
-    private InputStream getFileFromResourceAsStream(String fileName) {
+    private File getFileFromResource(String fileName) throws URISyntaxException{
 
-        // The class loader that loaded the class
         ClassLoader classLoader = getClass().getClassLoader();
-        InputStream inputStream = classLoader.getResourceAsStream(fileName);
-
-        // the stream holding the file content
-        if (inputStream == null) {
+        URL resource = classLoader.getResource(fileName);
+        if (resource == null) {
             throw new IllegalArgumentException("file not found! " + fileName);
         } else {
-            return inputStream;
+            return new File(resource.toURI());
         }
 
     }
-	
 
 }
