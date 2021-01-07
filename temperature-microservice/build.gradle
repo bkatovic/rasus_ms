@@ -56,7 +56,13 @@ jib {
         		from = '/src/main/resources'
         		into = '/src/main/resources'
       		}
+      		path {
+      			from = 'src/main/jib'
+      		}
 		}
+		permissions = [
+			'/wait-for-it.sh': '755'
+		]
 	}
 }
 	

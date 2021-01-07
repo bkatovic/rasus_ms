@@ -1,10 +1,5 @@
 package aggregatormicroservice;
 
-import java.io.IOException;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.ProtocolException;
-import java.net.URL;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +16,13 @@ public class AggregatorController {
 	@Value("${temperature-format}")
 	private String tempFormat;
 	
+	@Value("${temperature-ms-name}")
+	private String temperatureMSname;
+	
+	@Value("${humidity-ms-name}")
+	private String humidityMSname;
+	
+	
 	@Autowired
 	private DiscoveryClient discoveryClient;
 
@@ -29,56 +31,17 @@ public class AggregatorController {
 		//String humiditymicroserviceURI = "http://127.0.0.1:8081";
 		//String temperaturemicroserviceURI = "http://127.0.0.1:8082";
 		
-		URL url = null;
-		try {
-			url = new URL("http://eureka-server:8761");
-		} catch (MalformedURLException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-		HttpURLConnection connection = null;
-		try {
-			connection = (HttpURLConnection)url.openConnection();
-		} catch (IOException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-		try {
-			connection.setRequestMethod("GET");
-		} catch (ProtocolException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		try {
-			connection.connect();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-		int code = 420;
-		try {
-			code = connection.getResponseCode();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		System.out.println(code);
-		
-		
-		
 		String humidityURI = null, temperatureURI = null;
 		List<ServiceInstance> list;
 	    
-		list= this.discoveryClient.getInstances("temperature-ms");
+		list= this.discoveryClient.getInstances(temperatureMSname);
 	    if (list != null && list.size() > 0 ) {
 	        temperatureURI = list.get(0).getUri().toString();
 	    } else {
 	    	System.out.println("temperature-ms URI not found!");
 	    }
 	    
-	    list = this.discoveryClient.getInstances("humidity-ms");
+	    list = this.discoveryClient.getInstances(humidityMSname);
 	    if (list != null && list.size() > 0 ) {
 	        humidityURI = list.get(0).getUri().toString();
 	    } else {

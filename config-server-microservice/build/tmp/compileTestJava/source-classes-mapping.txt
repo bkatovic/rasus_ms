@@ -1,0 +1,2 @@
+com/configservermicroservice/ConfigServerMicroserviceApplicationTests.java
+ com.configservermicroservice.ConfigServerMicroserviceApplicationTests

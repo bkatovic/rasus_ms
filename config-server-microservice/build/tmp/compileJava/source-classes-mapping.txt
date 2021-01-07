@@ -1,0 +1,2 @@
+com/configservermicroservice/ConfigServerMicroserviceApplication.java
+ com.configservermicroservice.ConfigServerMicroserviceApplication

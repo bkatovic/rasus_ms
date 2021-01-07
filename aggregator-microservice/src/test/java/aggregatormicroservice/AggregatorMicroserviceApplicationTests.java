@@ -1,13 +1,13 @@
-package aggregatormicroservice;
-
-import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
-
-@SpringBootTest
-class AggregatorMicroserviceApplicationTests {
-
-	@Test
-	void contextLoads() {
-	}
-
-}
+//package aggregatormicroservice;
+//
+//import org.junit.jupiter.api.Test;
+//import org.springframework.boot.test.context.SpringBootTest;
+//
+//@SpringBootTest
+//class AggregatorMicroserviceApplicationTests {
+//
+//	@Test
+//	void contextLoads() {
+//	}
+//
+//}
